@@ -1,0 +1,19 @@
+server:
+  port: 8083
+
+
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/budgetbuddy
+      database: budgetbuddy
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+jwt:
+  secret: "bff0d26381c48c6d90a98ef3de43feb6a4f0b1baf9e2d7fd711b543affd78f74"

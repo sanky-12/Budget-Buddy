@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/budgetbuddy
+      database: budgetbuddy
+
+jwt:
+  secret: "bff0d26381c48c6d90a98ef3de43feb6a4f0b1baf9e2d7fd711b543affd78f74"

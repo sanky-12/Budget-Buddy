@@ -1,0 +1,26 @@
+server:
+  port: 8090
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    consumer:
+      group-id: activity-service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      auto-offset-reset: earliest
+
+      # This MUST be under `consumer` → `properties`
+      properties:
+        spring.json.trusted.packages: "java.util, java.lang, com.budgetbuddy.activity_service.model, com.budgetbuddy.events"
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/budgetbuddy
+      database: budgetbuddy
+
+logging:
+  level:
+    root: INFO
+    org.springframework.kafka: INFO
