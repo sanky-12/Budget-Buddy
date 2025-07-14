@@ -25,10 +25,22 @@ public class SecurityConfig {
         http
                 .cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(authz -> authz
+                .authorizeHttpRequests(auth -> auth
+                        // 1) Allow Swagger/OpenAPI without auth
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html"
+                        ).permitAll()
+
+                        // 2) Permit login/register
                         .requestMatchers("/auth/login", "/auth/register").permitAll()
+
+                        // 3) Protect expense endpoints
                         .requestMatchers("/expenses/**").authenticated()
-                        .anyRequest().permitAll()
+
+                        // 4) Everything else open
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 

@@ -26,15 +26,15 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain chain) throws ServletException, IOException {
         final String authHeader = request.getHeader("Authorization");
-        System.out.println("Auth Header: " + authHeader);
+//        System.out.println("Auth Header: " + authHeader);
 
 
 
         String jwt = null;
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             jwt = authHeader.substring(7);
-            System.out.println("JWT: " + jwt);
-            System.out.println("Is Token Valid: " + jwtUtil.isTokenValid(jwt));
+//            System.out.println("JWT: " + jwt);
+//            System.out.println("Is Token Valid: " + jwtUtil.isTokenValid(jwt));
             try {
                 if (jwtUtil.isTokenValid(jwt)) {
                     String userId = jwtUtil.extractUserId(jwt);
