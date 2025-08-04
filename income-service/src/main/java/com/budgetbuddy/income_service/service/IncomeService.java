@@ -42,7 +42,7 @@ public class IncomeService {
                 Instant.now()                // when
         );
         producer.send(evt);
-        return incomeRepository.save(income);
+        return saved;
     }
 
     public List<Income> getAllIncome(String userId) {

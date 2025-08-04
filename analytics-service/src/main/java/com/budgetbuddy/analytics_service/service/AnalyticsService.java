@@ -25,41 +25,7 @@ public class AnalyticsService {
     @Autowired private IncomeClient incomeClient;
     @Autowired private BudgetClient budgetClient;
 
-//    public AnalyticsResponse getUserAnalytics(String userId) {
-//        List<Expense> expenses = expenseClient.getExpenses(userId);
-//        double totalExpenses = expenses.stream().mapToDouble(Expense::getAmount).sum();
-//
-//        double totalIncome = incomeClient.getTotalIncome(userId);
-//        double netSavings = totalIncome - totalExpenses;
-//
-//        List<Budget> budgets = budgetClient.getBudgets(userId);
-//        Map<String, Double> spentByCategory = expenses.stream()
-//                .collect(Collectors.groupingBy(Expense::getCategory, Collectors.summingDouble(Expense::getAmount)));
-//
-//        List<BudgetUsage> usageList = new ArrayList<>();
-//        for (Budget budget : budgets) {
-//            double spent = spentByCategory.getOrDefault(budget.getCategory(), 0.0);
-//            double remaining = budget.getLimitAmount() - spent;
-//            double percentUsed = (spent / budget.getLimitAmount()) * 100.0;
-//            usageList.add(new BudgetUsage(
-//                    budget.getCategory(),
-//                    budget.getLimitAmount(),
-//                    spent,
-//                    remaining,
-//                    percentUsed
-//            ));
-//        }
-//
-//        AnalyticsResponse response = new AnalyticsResponse();
-//        response.setTotalExpenses(totalExpenses);
-//        response.setTotalIncome(totalIncome);
-//        response.setNetSavings(netSavings);
-//        response.setBudgetUsage(usageList);
-//
-//        return response;
-//    }
 
-//
     public AnalyticsResponse getUserAnalytics(String userId, String monthYear) {
         List<Expense> expenses = expenseClient.getExpenses(userId);
         List<Budget> budgets = budgetClient.getBudgets(userId);
